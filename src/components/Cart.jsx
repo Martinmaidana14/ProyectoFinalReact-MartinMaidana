@@ -52,6 +52,7 @@ export const Cart = () => {
         });
     };
 
+    const handleClear = () => clear();
     const handleRemove = (id) => removeItem(id);
 
     return (

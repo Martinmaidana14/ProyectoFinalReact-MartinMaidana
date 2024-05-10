@@ -5,7 +5,7 @@ import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ItemListContainer } from './components/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
-import { Cart } from './contexts/CartContext';
+import { Cart } from "./components/Cart"
 import { NavBar } from "./components/NavBar";
 import { Provider } from './contexts/CartContext';
 //import { getFirestore, getDocs, collection } from "firebase/firestore";
