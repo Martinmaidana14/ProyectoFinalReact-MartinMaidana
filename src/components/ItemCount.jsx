@@ -1,30 +1,34 @@
 
 import { useState } from "react";
 
-export const ItemCount = ({stock, initial, onAdd}) => {
-    const [quantity, setQuantity] = useState(initial)
+export const ItemCount = ({ onAdd, stock }) => {
+    const [quantity, setQuantity] = useState(1)
 
-    const increment = () => {
-        if(quantity < stock) {
-            setQuantity(quantity+1)
-        }
+    const handleDecrement = () => {
+        if(quantity < 1) setQuantity((prev) => prev - 1)
+    };
+
+    const handleIncrement = () => {
+        if (stock > quantity) setQuantity((prev) => prev + 1)
+        };
+
+    const handleAdd = () => {
+        onAdd(quantity);
+        setQuantity(1);
     }
 
-    const decrement = () => {
-        if(quantity > 1) {
-            setQuantity(quantity - 1)
-        }
-    }
 
     return (
         <div className="Counter">
-            <div className="Controls">
-                <button className="Button" onClick={decrement}>-</button>
+            <div className="Controls d-flex">
+                <button type="Button" className="btn btn-dark" onClick={handleDecrement}>-</button>
                 <h4 className="Number">{quantity}</h4>
-                <button className="Button" onClick={increment}>+</button>
+                <button type="Button" className="btn btn-dark" onClick={handleIncrement}>+</button>
             </div>
             <div>
-                <button className="Button" onClick={() => onAdd(quantity)} disabled={!stock}>Agregar a carrito</button>
+                <button type="Button" className="btn btn-dark" onClick={handleAdd}>
+                    Agregar a carrito
+                </button>
             </div>
         </div>
     )
