@@ -1,8 +1,18 @@
-# React + Vite
+<div align="center">
+<h1 align="center">Hola, soy Martin Maidana !!</a> <img src="https://github.com/Kathryn-Jie/Kathryn-Jie/blob/main/wave.gif" width="40px" /></h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+</div>
 
-Currently, two official plugins are available:
+## Sobre mi
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⭐ Programo desde el año 2022 
+- 📲 Me especializo en Backend.
+- ✏️ Curse Desarrollo Web, JavaScript, React JS y Programacion Backend en Coder House
+  <br>
+
+## Este repo trata sobre: eCommerce de venta de productos tecnologicos.
+
+- Esta aplicación está creada con npm create vite@latest.
+- Clonarla ejecutando git clone https://github.com/Martinmaidana14/ProyectoFinalReact-MartinMaidana.git
+- Para iniciarla, luego de clonar, ejecute npm i para instalar dependencias y luego npm run dev para arrancar el servidor de desarrollo.
+<br>

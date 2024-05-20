@@ -57,7 +57,7 @@ export const Cart = () => {
 
     return (
         
-        <Container className='mt-4'>
+        <Container className='mt-6'>
 
             <h1>Productos</h1>
             {items.map((i) => {
