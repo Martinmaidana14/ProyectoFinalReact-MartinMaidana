@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { initializeApp } from "firebase/app";
-
 import App from './App.jsx'
 import './index.css'
+
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,7 +17,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export { db };
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

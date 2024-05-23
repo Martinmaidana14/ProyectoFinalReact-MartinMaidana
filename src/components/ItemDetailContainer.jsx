@@ -5,11 +5,11 @@ import { useParams } from "react-router-dom";
 import { getFirestore, getDoc, doc } from 'firebase/firestore';
 
 import { ItemDetail } from "./ItemDetail"
-
+import { Spinner } from 'react-bootstrap';
 
 export const ItemDetailContainer = () => {
 
-    const [product, setProduct] = useState(null);
+    const [item, setItem] = useState(null);
 
     const { id } = useParams();
 
@@ -21,15 +21,15 @@ export const ItemDetailContainer = () => {
 
 
         getDoc(refDoc).then((snapshot) => {
-            setProduct({ id: snapshot.id, ...snapshot.data() });
+            setItem({ id: snapshot.id, ...snapshot.data() });
         });
     }, [id]);
 
     //Retorno temprano
-    if(!product) return <div>"loading"</div>;
+    if(!item) return <div className="spinnerSt"><Spinner animation="border" variant="danger" /> </div>
 
     return (
-        <ItemDetail product={product}/>
+        <ItemDetail {...item}/>
     );
 };
 

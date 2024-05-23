@@ -1,47 +1,49 @@
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { useContext } from 'react';
-
+import { Row, Col, Container } from 'react-bootstrap';
 import { ItemCount } from './ItemCount';
 import { CartContext } from '../contexts/CartContext';
 
 
-export const ItemDetail = ({ product }) => {
+export const ItemDetail = ({ categoryId, title, description, price, image, stock,  }) => {
 
     const { addItem } = useContext(CartContext);
 
     const add = (quantity) => {
-        addItem(product, quantity);
+        const item = {
+            categoryId,
+            title,
+            price,
+        };
+        addItem(item, quantity);
     };
 
     return (
         <Container className='mt-4'>
             <Row className=''>
-                <Col className='md-6 order-md-1'>
-                    <img src={product.image} alt={product.title} width="280px" className="ItemImg d-block w-65" />
+                <Col className='md-6 '>
+                    <img src={image} alt={title} width="280px" className="ItemImg d-block w-65" />
                 </Col>
                 <Col className='md-6 order-md-2'>
-                    <h2 className="infoheader">
-                        {product.title}
-                    </h2>
+                    <h1 className="infoheader">
+                        {title}
+                    </h1>
 
                     <p className="info">
-                        Categoria: {product.categoryId}
+                        Categoria: {categoryId}
                     </p>
                     <p className="info">
-                        Descripcion: {product.description}
+                        Descripcion: {description}
                     </p>
                     <p className="info">
-                        Precio: ${product.price}
+                        Precio: ${price}
                     </p>
                     <p className="info">
-                        Stock: {product.stock}
+                        Stock: {stock}
                     </p>
 
                     <div className="d-grid gap-3 col-10 mx-auto">
-                        <ItemCount stock={product.stock} onAdd={add} />
+                        <ItemCount initial={1} stock={stock} onAdd={add} />
                     </div>
                 </Col>
             </Row>

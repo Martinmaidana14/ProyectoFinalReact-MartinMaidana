@@ -7,22 +7,21 @@ import { useParams } from "react-router-dom";
 
 import {
     getFirestore,
-    getDocs,
     collection,
+    getDocs,
     query,
     where,
 } from "firebase/firestore";
 
 export const ItemListContainer = () => {
 
-    const [products, setProducts] = useState([]);
+    const [items, setItems] = useState([]);
 
     const { id } = useParams();
 
     useEffect(() => {
         
         const db = getFirestore();
-
         let refCollection;
 
         if (!id) {
@@ -35,7 +34,7 @@ export const ItemListContainer = () => {
         }
     
         getDocs(refCollection).then((snapshot) => {
-            setProducts(
+            setItems(
                 snapshot.docs.map((doc) => {
                     return { id: doc.id, ...doc.data() };
                 })
@@ -46,7 +45,7 @@ export const ItemListContainer = () => {
     return (
 
         <Container className='mt-4'>
-            <ItemList products={products}/>
+            <ItemList items={items}/>
         </Container>
     );
 };

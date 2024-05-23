@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 
 
-export const Item = ({ product }) => (
+export const Item = ({ item }) => (
     
-    <Card className='border-success mb-3 text-center' style={{ width: '18rem' }}>
-        <Card.Img className='card-header img-thumbnail' src={product.image} />
+    <Card className='cardImg border-success mb-3 text-center' style={{ width: '18rem' }}>
+        <Card.Img className='card-header img-thumbnail' src={item.image} />
         <Card.Body className='text-danger'>
-            <Card.Title>{product.title}</Card.Title>
-            <Card.Text>Precio:  ${product.price}</Card.Text>
-            <Link to={`/item/${product.id}`} >
+            <Card.Title>{item.title}</Card.Title>
+            <Card.Text>Precio:  ${item.price}</Card.Text>
+            <Link to={`/item/${item.id}`} >
                 <Button variant="primary">Ver detalle</Button>
             </Link>
         </Card.Body>

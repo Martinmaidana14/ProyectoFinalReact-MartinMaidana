@@ -1,7 +1,40 @@
 
-#cart-widget > span {
-  color: pink;
-  padding-left: 1rem;
-  font-weight: 800;
+
+
+.buttonCart {
+  background-color: red;
+  border: none;
 }
 
+.spinnerSt {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.quantityBadge {
+  background-color: rgba(200, 0, 0, 0.828);
+  color: white;
+  border-radius: 50% 0rem;
+  padding: 3px 6px;
+  font-size: 14px;
+}
+
+
+
+.cardImg {
+  border-radius: 0%;
+  box-shadow: 0rem 0rem 0.3125rem grey;
+  opacity: 0.9;
+  text-align: center;
+}
+.cardImg:hover {
+  box-shadow: 0rem 0rem 0.1rem rgb(222, 30, 30);
+  border: 0.0625rem groove rgba(169, 31, 31, 0.296);
+  opacity: 1;
+}
+
+.Number {
+  color:black
+}

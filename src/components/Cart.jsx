@@ -1,20 +1,65 @@
 
-import Container from 'react-bootstrap/Container';
-import { useContext, useState } from 'react';
+import { useEffect, useContext } from "react";
 
 import { CartContext } from '../contexts/CartContext';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { Link } from "react-router-dom";
+import { CartItem } from './CartItem';
 
-const initialValues = {
+//import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
+/*const initialValues = {
     name: "",
     phone: "",
     email: "",
-};
+};*/
 
 export const Cart = () => {
 
+    const { items, clearItem, total, getTotal } = useContext(CartContext);
+
+    useEffect(() => {
+        getTotal();
+    }, [items, getTotal]);
+
+    return (
+        <div className="containerCartItemList">
+            {items.length === 0 ? (
+            <>
+                <h2>El carrito está vacío.</h2>
+                <Link to={"/"}>
+                    <button className="buttonCart">volver a la home</button>
+                </Link>
+            </>
+        ) : (
+            <>
+                {items.map((p) => (
+                    <CartItem key={p.categoryId} {...p} />
+                ))}
+                <h4>Subtotal: ${total} </h4>
+                <h3>total: ${total}</h3>
+                <div className="buttonsCart">
+                    <button className="buttonClearCart" onClick={() => clearItem()}>
+                        Limpiar carrito
+                    </button>
+
+                </div>
+            </>
+        )}
+    </div>
+    );
+};
+
+
+
+
+
+
+/*
+                    <Link to={"/Checkout"}>
+                        <button className="buttonFinish">Terminar mi compra</button>
+                    </Link>
     const [values, setValues] = useState(initialValues);
-    const { clear, items, removeItem } = useContext(CartContext);
+    const { clearItem, items, removeItem } = useContext(CartContext);
 
     const total = () => items.reduce((acc, i) => acc + i.quantity * i.price, 0);
 
@@ -52,12 +97,12 @@ export const Cart = () => {
         });
     };
 
-    const handleClear = () => clear();
+    const handleClear = () => clearItem();
     const handleRemove = (id) => removeItem(id);
 
     return (
         
-        <Container className='mt-6'>
+        <Container className='mt-4'>
 
             <h1>Productos</h1>
             {items.map((i) => {
@@ -102,4 +147,4 @@ export const Cart = () => {
         </Container>
     );
 };
-
+*/
