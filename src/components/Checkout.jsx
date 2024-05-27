@@ -9,7 +9,7 @@ export const Checkout = () => {
 
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState("");
-    const { items, total, clearItem } = useContext(CartContext);
+    const { cart, total, clearCart } = useContext(CartContext);
 
     const createOrder = async ({ name, phone, email }) => {
         setLoading(true);
@@ -18,8 +18,8 @@ export const Checkout = () => {
 
             const newOrderRef = await addDoc(ordersRef, {
                 client: { name, phone, email },
-                items: items.map(({ categoryId, title, quantity, price }) => ({
-                    categoryId,
+                items: cart.map(({ id, title, quantity, price }) => ({
+                    id,
                     title,
                     quantity,
                     price,
@@ -31,7 +31,7 @@ export const Checkout = () => {
 
             setLoading(false);
             setOrderId(newOrderRef.id);
-            clearItem();
+            clearCart();
         } catch (error) {
 
             console.error("Error creating order:", error);
@@ -113,9 +113,9 @@ export const Checkout = () => {
         </Form>
 
         <div className="sectionCartFinal">
-            {items.map(({ categoryId, title, quantity }) => (
+            {cart.map(({ id, title, quantity }) => (
 
-                <div key={categoryId} className="d-flex gap-3">
+                <div key={id} className="d-flex gap-3">
                     <p>{title}</p>
                     <p>Cantidad: {quantity}</p>
                 </div>

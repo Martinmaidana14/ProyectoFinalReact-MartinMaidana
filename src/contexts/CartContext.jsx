@@ -3,25 +3,25 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 
-export const Provider = ({ children })=>{
+export const Provider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
 
     const getTotal = () => {
         let totalPrice = cart.reduce(
-            (acc, item) => acc + item.price * item.quantity,
+          (acc, item) => acc + item.price * item.quantity,
             0
         );
         setTotal(totalPrice.toLocaleString());
     };
 
-    const addItem = (item, quantity) =>{
-        const isExists = cart.some((i) => i.id === item.id);
-
-        if(isExists){
+    const addItem = (item, quantity) => {
+        const itExist = cart.some((i) => i.id === item.id);
+        if (itExist) {
             const updateItem = cart.map((i) => {
-                if(i.id === item.id) {
+
+                if (i.id === item.id) {
                     return {
                         ...i,
                         quantity: i.quantity + quantity,
@@ -48,16 +48,16 @@ export const Provider = ({ children })=>{
                 return i;
             })
             .filter((i) => i.quantity > 0);
-
-            setCart(updatedCart);
-        };
-
-    const clearItem = () => {
+    
+        setCart(updatedCart);
+    };
+    
+    const clearCart = () => {
         setCart([]);
-    }; 
+    };
 
     return(
-        <CartContext.Provider value={{ cart, addItem, removeItem, clearItem, getTotal, total }}>
+        <CartContext.Provider value={{ cart, addItem, removeItem, clearCart, getTotal, total }}>
             {children}
         </CartContext.Provider>
     );

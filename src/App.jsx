@@ -2,7 +2,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter , Routes, Route } from 'react-router-dom';
 
-import './App.css';
 import { ItemListContainer } from './components/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
 import { Cart } from "./components/Cart"
@@ -10,6 +9,9 @@ import { NavBar } from "./components/NavBar";
 import { Provider } from './contexts/CartContext';
 import { Checkout } from './components/Checkout';
 import { Error404 } from './components/Error404';
+
+import './App.css';
+
 //import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 
@@ -18,9 +20,9 @@ function App() {
 
   return (
 
-    <BrowserRouter>
+    <Provider>
 
-      <Provider>
+      <BrowserRouter>
 
         <NavBar />
 
@@ -33,9 +35,9 @@ function App() {
             <Route path="*" element={<Error404 />} />
           </Routes>
 
-      </Provider>
+      </BrowserRouter>
 
-    </BrowserRouter>
+    </Provider>
   );
 }
 

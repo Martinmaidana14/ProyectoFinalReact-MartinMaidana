@@ -4,9 +4,9 @@ import { CartContext } from "../contexts/CartContext";
 import { useContext } from "react";
 import { GoTrash } from "react-icons/go";
 
-export const CartItem = ({ categoryId, title, price, quantity }) => {
+export const CartItem = ({ id, title, price, quantity }) => {
     const { removeItem } = useContext(CartContext);
-    const handleRemove = () => removeItem(categoryId);
+    const handleRemove = () => removeItem(id);
 
     return (
         <Container>

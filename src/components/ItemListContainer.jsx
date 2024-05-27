@@ -1,17 +1,11 @@
 
-import { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
+import { Container } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
 import { ItemList } from './ItemList';
-import { useParams } from "react-router-dom";
-//import data from "../data/products.json";
+import { useParams } from 'react-router-dom';
 
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    where,
-} from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
+
 
 export const ItemListContainer = () => {
 
@@ -45,7 +39,7 @@ export const ItemListContainer = () => {
     return (
 
         <Container className='mt-4'>
-            <ItemList items={items}/>
+            <ItemList items={ items }/>
         </Container>
     );
 };

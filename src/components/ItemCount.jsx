@@ -2,24 +2,24 @@
 import { useState } from "react";
 
 export const ItemCount = ({ initial, stock, onAdd }) => {
-    const [quantity, setQuantity] = useState(initial);
+    const [count, setCount] = useState(initial);
 
     const handleIncrement = () => {
-        if (quantity < stock) {
-            setQuantity(quantity + 1);
+        if (count < stock) {
+            setCount(count + 1);
             }
         };
 
     const handleDecrement = () => {
-        if(quantity > 1) {
-            setQuantity(quantity - 1);
+        if(count > 1) {
+            setCount(count - 1);
         }
     };
 
 
     const handleAdd = () => {
-        onAdd(quantity);
-        setQuantity(initial);
+        onAdd(count);
+        setCount(initial);
     };
 
 
@@ -27,7 +27,7 @@ export const ItemCount = ({ initial, stock, onAdd }) => {
         <div className="Counter">
             <div className="d-flex">
                 <button type="Button" className="btn btn-dark mx-auto" onClick={handleDecrement}>-</button>
-                <h2 className="Number">{quantity}</h2>
+                <h2 className="Number">{count}</h2>
                 <button type="Button" className="btn btn-dark mx-auto" onClick={handleIncrement}>+</button>
             </div>
             <div className="d-grid gap-3 col-10 mx-auto">

@@ -1,11 +1,11 @@
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 //import { ItemCount } from "./ItemCount";
-import { getFirestore, getDoc, doc } from 'firebase/firestore';
-
 import { ItemDetail } from "./ItemDetail"
 import { Spinner } from 'react-bootstrap';
+import { getFirestore, getDoc, doc } from 'firebase/firestore';
+
 
 export const ItemDetailContainer = () => {
 
@@ -19,7 +19,6 @@ export const ItemDetailContainer = () => {
 
         const refDoc = doc(db, "Items", id);
 
-
         getDoc(refDoc).then((snapshot) => {
             setItem({ id: snapshot.id, ...snapshot.data() });
         });
@@ -32,4 +31,5 @@ export const ItemDetailContainer = () => {
         <ItemDetail {...item}/>
     );
 };
+
 

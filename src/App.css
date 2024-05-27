@@ -1,16 +1,19 @@
 
 
-
-.buttonCart {
-  background-color: red;
-  border: none;
-}
-
 .spinnerSt {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.Number {
+  color:black
+}
+
+.buttonCart {
+  background-color: red;
+  border: none;
 }
 
 .quantityBadge {
@@ -35,6 +38,3 @@
   opacity: 1;
 }
 
-.Number {
-  color:black
-}

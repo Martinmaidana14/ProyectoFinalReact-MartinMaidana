@@ -15,15 +15,15 @@ import { CartItem } from './CartItem';
 
 export const Cart = () => {
 
-    const { items, clearItem, total, getTotal } = useContext(CartContext);
+    const { cart, clearCart, total, getTotal } = useContext(CartContext);
 
     useEffect(() => {
         getTotal();
-    }, [items, getTotal]);
+    }, [cart, getTotal]);
 
     return (
         <div className="containerCartItemList">
-            {items.length === 0 ? (
+            {cart.length === 0 ? (
             <>
                 <h2>El carrito está vacío.</h2>
                 <Link to={"/"}>
@@ -32,16 +32,18 @@ export const Cart = () => {
             </>
         ) : (
             <>
-                {items.map((p) => (
-                    <CartItem key={p.categoryId} {...p} />
+                {cart.map((p) => (
+                    <CartItem key={p.id} {...p} />
                 ))}
                 <h4>Subtotal: ${total} </h4>
                 <h3>total: ${total}</h3>
                 <div className="buttonsCart">
-                    <button className="buttonClearCart" onClick={() => clearItem()}>
+                    <button className="buttonClearCart" onClick={() => clearCart()}>
                         Limpiar carrito
                     </button>
-
+                    <Link to={"/Checkout"}>
+                        <button className="buttonFinish">Terminar mi compra</button>
+                    </Link>
                 </div>
             </>
         )}

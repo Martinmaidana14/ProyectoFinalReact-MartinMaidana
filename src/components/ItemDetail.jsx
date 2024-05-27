@@ -1,17 +1,17 @@
 
 import { useContext } from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
 import { ItemCount } from './ItemCount';
 import { CartContext } from '../contexts/CartContext';
 
+import { Col, Container, Row } from 'react-bootstrap';
 
-export const ItemDetail = ({ categoryId, title, description, price, image, stock,  }) => {
+export const ItemDetail = ({ id, title, description, price, image, stock  }) => {
 
     const { addItem } = useContext(CartContext);
 
     const add = (quantity) => {
         const item = {
-            categoryId,
+            id,
             title,
             price,
         };
@@ -30,13 +30,13 @@ export const ItemDetail = ({ categoryId, title, description, price, image, stock
                     </h1>
 
                     <p className="info">
-                        Categoria: {categoryId}
+                        Categoria: {id}
                     </p>
                     <p className="info">
                         Descripcion: {description}
                     </p>
                     <p className="info">
-                        Precio: ${price}
+                        Precio: ${price.toLocaleString()}
                     </p>
                     <p className="info">
                         Stock: {stock}
